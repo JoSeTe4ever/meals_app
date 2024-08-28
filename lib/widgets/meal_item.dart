@@ -5,13 +5,12 @@ import '../models/meal.dart';
 import 'like_heart.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal});
+
+  const MealItem({super.key, required this.meal, required this.onItemPressed});
 
   final Meal meal;
 
-  void _onItemPressed() {
-    print('caca');
-  }
+  final Function() onItemPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class MealItem extends StatelessWidget {
             FadeInImage(
                 placeholder: MemoryImage(kTransparentImage),
                 image: NetworkImage(meal.imageUrl)),
-            LikeHeartButton(onPressed: _onItemPressed)
+            LikeHeartButton(onPressed: onItemPressed)
           ],
         ),
       ),

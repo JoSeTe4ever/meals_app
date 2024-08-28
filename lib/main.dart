@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meals_app/models/favourite_meals.dart';
+import 'package:meals_app/routes/routes.dart';
 import 'package:meals_app/screens/categories.dart';
 import 'package:provider/provider.dart';
 
@@ -27,9 +28,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouterConfig,
       theme: theme,
-      home: const CategoriesScreen(),
     );
   }
 }

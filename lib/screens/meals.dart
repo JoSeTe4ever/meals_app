@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../models/meal.dart';
 import '../widgets/meal_item.dart';
 
@@ -8,6 +7,23 @@ class MealsScreen extends StatelessWidget {
 
   final List<Meal> meals;
   final String title;
+
+  void _onItemPressed(BuildContext context, int index) {
+    // add meal to favourites and show snackbar.
+    final snackBar = SnackBar(
+      content: const Text('Yay! A SnackBar!'),
+      action: SnackBarAction(
+        label: 'Undo',
+        onPressed: () {
+          // Some code to undo the change.
+        },
+      ),
+    );
+
+    // Find the ScaffoldMessenger in the widget tree
+    // and use it to show a SnackBar.
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +41,7 @@ class MealsScreen extends StatelessWidget {
       ),
       body: ListView.builder(
         itemBuilder: (ctx, index) {
-          return MealItem(meal: meals[index]);
+          return MealItem(meal: meals[index], onItemPressed: () => _onItemPressed(context, index));
         },
         itemCount: meals.length,
       ),

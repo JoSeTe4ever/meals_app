@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meals_app/screens/meals.dart';
 import 'package:meals_app/models/category.dart';
 import '../data/dummy_data.dart';
@@ -25,6 +26,13 @@ class CategoriesScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Pick up your category!'),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Navigator.pushNamed(context, 'favourites');
+            context.go('/favourites');
+          },
+          child: const Icon(Icons.favorite),
         ),
         body: GridView(
           padding: const EdgeInsets.all(25),
