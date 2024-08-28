@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/models/favourite_meals.dart';
+import 'package:provider/provider.dart';
 import '../models/meal.dart';
 import '../widgets/meal_item.dart';
 
@@ -10,6 +12,9 @@ class MealsScreen extends StatelessWidget {
 
   void _onItemPressed(BuildContext context, int index) {
     // add meal to favourites and show snackbar.
+    Provider.of<FavouriteMeals>(context, listen: false)
+        .addFavouriteMeal(meals[index]);
+
     final snackBar = SnackBar(
       content: const Text('Yay! A SnackBar!'),
       action: SnackBarAction(
@@ -41,7 +46,9 @@ class MealsScreen extends StatelessWidget {
       ),
       body: ListView.builder(
         itemBuilder: (ctx, index) {
-          return MealItem(meal: meals[index], onItemPressed: () => _onItemPressed(context, index));
+          return MealItem(
+              meal: meals[index],
+              onItemPressed: () => _onItemPressed(context, index));
         },
         itemCount: meals.length,
       ),

@@ -15,5 +15,6 @@ class FavouriteMeals extends ChangeNotifier {
     notifyListeners();
   }
 
+  get favouriteMeals => _favouriteMeals;
 
 }
